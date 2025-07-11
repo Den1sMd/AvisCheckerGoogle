@@ -1,0 +1,14 @@
+C:\Users\Denis\source\repos\AvisTester\bin\Debug\net8.0\AvisTester.exe
+C:\Users\Denis\source\repos\AvisTester\bin\Debug\net8.0\AvisTester.deps.json
+C:\Users\Denis\source\repos\AvisTester\bin\Debug\net8.0\AvisTester.runtimeconfig.json
+C:\Users\Denis\source\repos\AvisTester\bin\Debug\net8.0\AvisTester.dll
+C:\Users\Denis\source\repos\AvisTester\bin\Debug\net8.0\AvisTester.pdb
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.AssemblyInfoInputs.cache
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.AssemblyInfo.cs
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.csproj.CoreCompileInputs.cache
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.dll
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\refint\AvisTester.dll
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.pdb
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.genruntimeconfig.cache
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\ref\AvisTester.dll
