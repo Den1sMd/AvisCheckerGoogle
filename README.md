@@ -1,6 +1,8 @@
 Avis Google Checker
 Un petit programme console en C# qui permet de vérifier si un lien d'avis Google est toujours en ligne.
 
+
+
 Fonctionnalités
 Demande à l'utilisateur d'entrer un lien d'avis Google.
 
