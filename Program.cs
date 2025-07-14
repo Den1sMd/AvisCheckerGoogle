@@ -1,45 +1,84 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using AvisTester;
 
 class Program
 {
+
+    static string ala = forWeb.Getweb();
+
+    static int b = for3.seconde();
+
+
     static async Task Main(string[] args)
     {
         while (true)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\nEntre le lien de l'avis Google (ou tape 'exit' pour quitter) :");
-            Console.ResetColor();
-
+            Console.WriteLine("\nEntre le lien de l avis Google (ou tape 'exit' pour quitter) :");
             string url = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(url))
+            Console.ResetColor();
+
+            for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine("❌ Lien invalide.");
-                continue;
+                Console.WriteLine(" ");
+            }
+
+            if (string.IsNullOrWhiteSpace(url) || !url.Contains("maps.app.goo.gl"))
+            {
+                Console.ForegroundColor= ConsoleColor.Red;
+                Console.WriteLine("Lien invalide.");
+                Console.ResetColor();
+                break;
             }
 
             if (url.ToLower() == "exit")
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Exit");
+                Console.ResetColor();
                 break;
             }
 
-            bool isOnline = await CheckIfOnline(url);
+            while (2 > 1) {
 
-            if (isOnline)
+            string forS = b.ToString();
+
+            bool isonline = await CheckIfOnline(url);
+
+            if (isonline && url!= null && url.Contains("maps.app.goo.gl") &&  ala != null)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Parfait ! L avis est EN LIGNE.");
+
+                    for (int i2 = 0; i2 < 5; i2++)
+                    {
+                    Console.WriteLine(" ");
+                    }
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Parfait ! L avis est EN LIGNE.");
+                    await SendDiscordWebhook(url, true, ala);
+                    await Task.Delay(b);
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Nonnnnn ! L avis est HORS LIGNE ou le lien est invalide.");
-            }
+                    for (int i2 = 0; i2 < 5; i2++)
+                    {
+                        Console.WriteLine(" ");
+                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Nonnnnn ! L avis est HORS LIGNE ou le lien est invalide.");
+                    await SendDiscordWebhook(url, false, ala);
+                    await Task.Delay(b);
+
+                break;
+                }
 
             Console.ResetColor();
+
+            }
         }
     }
 
@@ -59,4 +98,52 @@ class Program
             return false;
         }
     }
+
+
+    static async Task SendDiscordWebhook(string url, bool isOnline, string webhook)
+    {
+        using (HttpClient client = new HttpClient())
+        {
+            var content = new
+            {
+                username = "Avis Checker Bot [Askov]",
+                embeds = new[]
+                {
+                    new {
+                        title = "Verif avis Google",
+                        description = $"Lien : {url}",
+                        color = isOnline ? 0x00FF00 : 0xFF0000,
+                        fields = new[]
+                        {
+                            new { name = "Statut", value = isOnline ? "✅ EN LIGNE" : "❌ HORS LIGNE", inline = true },
+                            new { name = "Date", value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), inline = true },
+                            new { name = "Contact", value = ("Discord : ask0v_"), inline = true }
+                            
+                        }
+                    }
+                }
+            };
+
+            string json = JsonSerializer.Serialize(content);
+
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            try
+            {
+                var response = await client.PostAsync(ala, httpContent);
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Erreur en envoyant le webhook Discord.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Rentre un webhook valide ou contact ask0v_ sur discord");
+                
+            }
+
+        }
+    }
+
+
 }
