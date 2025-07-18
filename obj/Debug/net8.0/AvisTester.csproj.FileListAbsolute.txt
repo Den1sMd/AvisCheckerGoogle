@@ -13,3 +13,6 @@ C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.pdb
 C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.genruntimeconfig.cache
 C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\ref\AvisTester.dll
 C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.sourcelink.json
+C:\Users\Denis\source\repos\AvisTester\bin\Debug\net8.0\HtmlAgilityPack.dll
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.csproj.AssemblyReference.cache
+C:\Users\Denis\source\repos\AvisTester\obj\Debug\net8.0\AvisTester.csproj.Up2Date

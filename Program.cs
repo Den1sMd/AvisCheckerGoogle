@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AvisTester;
+using HtmlAgilityPack;
 
 class Program
 {
@@ -20,13 +21,17 @@ class Program
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\nEntre le lien de l avis Google (ou tape 'exit' pour quitter) :");
             string url = Console.ReadLine();
-
             Console.ResetColor();
+
+            
 
             for (int i = 0; i < 5; i++)
             {
                 Console.WriteLine(" ");
             }
+
+
+
 
             if (string.IsNullOrWhiteSpace(url) || !url.Contains("maps.app.goo.gl"))
             {
@@ -52,6 +57,7 @@ class Program
 
             if (isonline && url!= null && url.Contains("maps.app.goo.gl") &&  ala != null)
             {
+                    if (await forFailure(url)) {
 
                     for (int i2 = 0; i2 < 5; i2++)
                     {
@@ -61,20 +67,23 @@ class Program
                     Console.WriteLine("Parfait ! L avis est EN LIGNE.");
                     await SendDiscordWebhook(url, true, ala);
                     await Task.Delay(b);
-            }
-            else
-            {
-                    for (int i2 = 0; i2 < 5; i2++)
-                    {
-                        Console.WriteLine(" ");
                     }
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Nonnnnn ! L avis est HORS LIGNE ou le lien est invalide.");
-                    await SendDiscordWebhook(url, false, ala);
-                    await Task.Delay(b);
 
-                break;
+                    else
+                    {
+                        for (int i2 = 0; i2 < 5; i2++)
+                        {
+                            Console.WriteLine(" ");
+                        }
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Nonnnnn ! L avis est HORS LIGNE ou le lien est invalide.");
+                        await SendDiscordWebhook(url, false, ala);
+                        await Task.Delay(b);
+
+                        break;
+                    }
                 }
+            
 
             Console.ResetColor();
 
@@ -142,6 +151,41 @@ class Program
                 
             }
 
+        }
+    }
+
+    static async Task<bool> forFailure(string url)
+    {
+        var handler = new HttpClientHandler
+        {
+            UseCookies = false
+        };
+
+        using (HttpClient client = new HttpClient(handler))
+        {
+            var response = await client.GetAsync(url);
+
+
+            string html = await response.Content.ReadAsStringAsync();
+
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(html);
+
+            if (html.Contains("deletereply"))
+            {
+                
+                Console.WriteLine("Good");
+
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("existe Plus");
+                return false;
+
+               
+            }
+           
         }
     }
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AvisTester")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0642c2539985556bde05785f4b3db8bafa36cebe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46a1b4c846158c1c76c6c8e132d8cd38daa0f60b")]
 [assembly: System.Reflection.AssemblyProductAttribute("AvisTester")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AvisTester")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
